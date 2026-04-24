@@ -147,12 +147,9 @@ The original application (Angular + Express.js) had security issues. This versio
 **Sawaira Mumtaz**
 
 GitHub: [Sawaira-Mumtaz786](https://github.com/Sawaira-Mumtaz786)
-
 ---
-
 ## License
 
 This project is created for an internship assignment.
 
 
-## Project Structure
