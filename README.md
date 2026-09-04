@@ -2,6 +2,9 @@
 
 A full-stack, enterprise-grade personal notifications and telemetry management system re-implemented from scratch with **React (frontend)**, a **modular NestJS-inspired architecture (backend)**, and **Google Gemini AI software engineering capabilities**.
 
+- **GitHub Repository**: [https://github.com/Sawaira-Mumtaz786/Notification-app](https://github.com/Sawaira-Mumtaz786/Notification-app)
+- **Live Cloud Preview / Demo**: [https://ais-pre-h2atsgtgxay2jjpoktm2wx-233031501422.asia-east1.run.app](https://ais-pre-h2atsgtgxay2jjpoktm2wx-233031501422.asia-east1.run.app)
+
 ---
 
 ## 🚀 Key Improvements Over Legacy System (Angular 7 + Express)
@@ -145,3 +148,25 @@ You can also click the **"Fill Seeded Demo Account"** button on the Login page t
 3. **Client-Side Optimistic Updates**:
    - *Decision*: Notifications and banner dismissals immediately update the local React state while dispatching the background API request.
    - *Benefit*: Delivers an instantaneous, zero-latency user experience.
+
+---
+
+## 🌐 Free Cloud Deployment Guide (Render / Railway)
+
+This full-stack application builds both the React frontend and Express backend into a single portable bundle (`npm run build` generates `dist/` and `dist/server.cjs`).
+
+### Deploying on Render (100% Free):
+1. Sign up or log in at **[render.com](https://render.com)** using your GitHub account.
+2. Click **New +** → **Web Service**.
+3. Select your repository: **`Sawaira-Mumtaz786/Notification-app`**.
+4. Configure service settings:
+   - **Environment**: `Node`
+   - **Build Command**: `npm install && npm run build`
+   - **Start Command**: `npm start`
+   - **Plan**: `Free`
+5. Under **Environment Variables**, configure:
+   - `NODE_ENV` = `production`
+   - `PORT` = `3000`
+   - `JWT_SECRET` = `<any-random-32-char-string>`
+   - `GEMINI_API_KEY` = *(optional, for live AI suggestions)*
+6. Click **Deploy Web Service**. Render will build and supply an active HTTPS URL within 2-3 minutes.
