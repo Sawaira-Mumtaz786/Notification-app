@@ -1,0 +1,6 @@
+{
+  "name": "Notifications System",
+  "description": "Full-stack personal notification management system built with React, NestJS architecture, JWT authentication, real-time banners, auto-closing alerts, and Gemini AI triage & remediation.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

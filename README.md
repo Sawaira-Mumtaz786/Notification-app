@@ -1,0 +1,147 @@
+# Notifications System — React + NestJS-Architecture Backend & AI Incident Engine
+
+A full-stack, enterprise-grade personal notifications and telemetry management system re-implemented from scratch with **React (frontend)**, a **modular NestJS-inspired architecture (backend)**, and **Google Gemini AI software engineering capabilities**.
+
+---
+
+## 🚀 Key Improvements Over Legacy System (Angular 7 + Express)
+
+1. **Security & Cryptography Hardening**:
+   - Replaced legacy, vulnerable **MD5 hashing** with salted **`bcrypt` (10 rounds)** for secure credential storage.
+   - Replaced cookie-based session state with stateless **JSON Web Tokens (JWT)** passed via `Authorization: Bearer <token>` headers, preventing Cross-Site Request Forgery (CSRF).
+   - Replaced weak client-side assumptions with strict **Server-Side Data Transfer Objects (DTOs)** and runtime input validation.
+   - Strict resource isolation: users can never view, mutate, dismiss, or delete another user's notifications (403 Forbidden enforcement).
+
+2. **Full-Stack Architecture**:
+   - **Backend**: Structured following **NestJS modular standards** (`modules/{auth,notifications,ai}`) with dedicated Controllers, Services, DTOs, and Guards.
+   - **Frontend**: Modern React with TypeScript, hooks, reactive context management, responsive Tailwind CSS styling, and zero external UI clutter.
+   - **Auto-Close & Real-Time Sync**: INFO notifications automatically count down and dismiss after **90 seconds** with live UI progress indicators and optimistic local state updates.
+
+3. **AI Software Engineering Superpowers (Gemini API)**:
+   - **AI Auto-Triage & Scoring**: Automatically determines notification severity (`INFO`, `WARNING`, `ERROR`), assigns an urgency score (1-10), refines wording, and provides reasoning.
+   - **AI Prompt Drafter**: Transforms brief incident descriptions (e.g., *"Redis cache latency elevated"*) into structured, production-grade alerts.
+   - **AI Incident Playbook & Remediation**: Generates instant Root Cause Analysis, triage checklists, and terminal command mitigation steps for WARNING and ERROR incidents.
+   - **AI Executive Health Digest**: Autonomously analyzes telemetry and synthesizes an executive briefing on overall system status (`HEALTHY`, `DEGRADED`, `CRITICAL`).
+
+---
+
+## 🛠️ Architecture Overview
+
+```
+├── server/
+│   ├── database/
+│   │   └── db.ts                        # JSON document store simulating Mongoose models
+│   └── modules/
+│       ├── auth/
+│       │   ├── dto/                     # Validation DTOs (Register, Login)
+│       │   ├── auth.controller.ts       # Route endpoints (/api/auth/*)
+│       │   ├── auth.service.ts          # Authentication logic & bcrypt/JWT
+│       │   └── auth.guard.ts            # Bearer JWT verification guard
+│       ├── notifications/
+│       │   ├── dto/                     # Validation DTOs (Create, Update)
+│       │   ├── notifications.controller.ts
+│       │   └── notifications.service.ts # CRUD & banner logic
+│       └── ai/
+│           ├── ai.controller.ts         # Endpoints (/api/ai/*)
+│           └── ai.service.ts            # @google/genai SDK integration & heuristic fallback
+├── src/
+│   ├── components/
+│   │   ├── Navbar.tsx                   # Brand, user info, AI digest trigger
+│   │   ├── NotificationBanner.tsx       # Top dismissible banners & 90s auto-close
+│   │   ├── NotificationCard.tsx         # Dashboard card with edit, delete, AI playbook
+│   │   ├── CreateNotificationModal.tsx  # Create form with AI Triage & Drafter
+│   │   ├── EditNotificationModal.tsx    # Pre-populated edit modal
+│   │   ├── RemediationModal.tsx         # AI Root Cause & Mitigation playbook
+│   │   └── AiDigestModal.tsx            # AI Executive Health Digest
+│   ├── context/
+│   │   └── AuthContext.tsx              # Session & auth state provider
+│   ├── pages/
+│   │   ├── LoginPage.tsx                # Secure sign-in with demo quick-fill
+│   │   ├── RegisterPage.tsx             # User registration (min 6-char password)
+│   │   └── DashboardPage.tsx            # Main real-time notification feed
+│   ├── services/
+│   │   └── api.ts                       # Typed Fetch client with JWT injection
+│   ├── types/
+│   │   └── index.ts                     # TypeScript interfaces
+│   ├── App.tsx                          # App root with protected routes
+│   └── main.tsx
+├── test/
+│   ├── auth.service.test.ts             # Auth & DTO unit tests (bcrypt, JWT, validation)
+│   └── notifications.service.test.ts    # Notifications CRUD & security isolation tests
+├── server.ts                            # Express + Vite root entry point
+├── metadata.json
+└── package.json
+```
+
+---
+
+## 📦 Environment Variables
+
+Create or configure `.env` based on `.env.example`:
+
+| Variable | Description | Default |
+| :--- | :--- | :--- |
+| `GEMINI_API_KEY` | Google Gemini API key for AI features | Optional (heuristics fallback included) |
+| `JWT_SECRET` | Secret key for signing and verifying JWT tokens | Autogenerated fallback in dev |
+| `MONGODB_URI` | MongoDB connection string (or JSON document store) | `.data/notifications_store.json` |
+| `PORT` | Web server port | `3000` |
+
+---
+
+## ⚡ Quick Start & Development
+
+### 1. Install Dependencies
+```bash
+npm install
+```
+
+### 2. Run Backend & Frontend in Development Mode
+```bash
+npm run dev
+```
+The server will start at `http://localhost:3000`. The Vite development middleware serves the React SPA while Express handles `/api/*` endpoints.
+
+### 3. Run Automated Unit Tests
+```bash
+npm test
+```
+Executes the native TypeScript test suite (`tsx --test test/*.test.ts`) covering:
+- Password hashing with bcrypt
+- Duplicate username rejection
+- JWT token signing and verification
+- DTO validation rules
+- Notification CRUD operations
+- Multi-user isolation security guards
+
+### 4. Build for Production
+```bash
+npm run build
+npm start
+```
+
+---
+
+## 🔑 Seeded Demo Account
+
+For rapid evaluation, a demo account is automatically seeded on first boot:
+
+- **Username**: `demo`
+- **Password**: `password123`
+
+You can also click the **"Fill Seeded Demo Account"** button on the Login page to test immediately.
+
+---
+
+## 🎯 Design Decisions & Trade-Offs
+
+1. **Modular Express Architecture vs. Heavy NestJS CLI Boilerplate**:
+   - *Decision*: In this cloud container environment, we organized Express cleanly with NestJS design principles (Modules, Services, Controllers, DTOs, Guards).
+   - *Benefit*: Yields clean separation of concerns, zero bloated framework decorators overhead, sub-second boot times, and 100% standard TypeScript compatibility.
+
+2. **Local MongoDB-Compatible Data Layer**:
+   - *Decision*: Abstracted database interactions using a Mongoose-compatible document store (`server/database/db.ts`).
+   - *Benefit*: Works out-of-the-box in zero-configuration sandbox environments without requiring external cloud databases, while keeping the interface identical to real Mongoose models (`UserModel.findOne`, `NotificationModel.create`, etc.).
+
+3. **Client-Side Optimistic Updates**:
+   - *Decision*: Notifications and banner dismissals immediately update the local React state while dispatching the background API request.
+   - *Benefit*: Delivers an instantaneous, zero-latency user experience.

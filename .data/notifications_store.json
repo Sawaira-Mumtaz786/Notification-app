@@ -1,0 +1,131 @@
+{
+  "users": [
+    {
+      "id": "99f13fbe-6b88-4605-84f8-8d60c2af3a0f",
+      "fullName": "Test Unit Engineer",
+      "username": "testuser_1788532892345",
+      "passwordHash": "$2b$10$FdCQgFFeLJE8jashGmcXuuVxXgEjddVP.OTQ21bibywT2Ro2vF0ca",
+      "createdAt": "2026-09-04T14:41:32.467Z"
+    },
+    {
+      "id": "0c2c39e2-1eea-4e38-b663-e82e8790916e",
+      "fullName": "DevOps Lead Engineer",
+      "username": "demo",
+      "passwordHash": "$2b$10$uPonXy/w4Fl7YZlDGtBRS.F4U2xUc3abQCSLmNCbTARYu1IIKrulW",
+      "createdAt": "2026-09-04T14:42:06.030Z"
+    },
+    {
+      "id": "40f4f8e1-5c63-4888-9506-0bbd9f503878",
+      "fullName": "Test Unit Engineer",
+      "username": "testuser_1788533204776",
+      "passwordHash": "$2b$10$ouCs0NWg4ayOXP1Jpy62W.Uh4oGVNcXMcY4mpKGw6CtSOd/XL6B76",
+      "createdAt": "2026-09-04T14:46:44.906Z"
+    }
+  ],
+  "notifications": [
+    {
+      "id": "b5d4fb40-77ae-4871-9ec0-e4b3dccdb844",
+      "userId": "user_1788532893029",
+      "header": "Cache warmed up",
+      "body": "Memcached keys reloaded",
+      "category": "INFO",
+      "isDismissed": true,
+      "dismissedAt": "2026-09-04T14:46:45.363Z",
+      "aiRemediation": null,
+      "urgencyScore": null,
+      "createdAt": "2026-09-04T14:41:33.037Z",
+      "updatedAt": "2026-09-04T14:46:45.363Z"
+    },
+    {
+      "id": "3aae595a-06ec-4bbe-b9a0-44ddfad0efa4",
+      "userId": "user_1788532893029",
+      "header": "User specific alert",
+      "body": "Confidential notification",
+      "category": "WARNING",
+      "isDismissed": false,
+      "dismissedAt": null,
+      "aiRemediation": null,
+      "urgencyScore": null,
+      "createdAt": "2026-09-04T14:41:33.040Z",
+      "updatedAt": "2026-09-04T14:41:33.040Z"
+    },
+    {
+      "id": "b64ad4f6-c82b-40ad-a2dd-0ccd861048fd",
+      "userId": "0c2c39e2-1eea-4e38-b663-e82e8790916e",
+      "header": "CRITICAL: Redis cluster memory usage exceeded 95%",
+      "body": "Node redis-cluster-02 has breached high memory threshold. Eviction policy volatile-lru triggered. Immediate failover or scaling recommended.",
+      "category": "ERROR",
+      "isDismissed": false,
+      "dismissedAt": null,
+      "aiRemediation": "1. Check large keys using redis-cli --bigkeys\n2. Trigger manual snapshot and scale memory limit\n3. Review client connection leak in billing worker",
+      "urgencyScore": 9,
+      "createdAt": "2026-09-04T14:42:06.030Z",
+      "updatedAt": "2026-09-04T14:42:06.030Z"
+    },
+    {
+      "id": "d4275424-e4af-4eda-a956-ceb7a3c298b6",
+      "userId": "0c2c39e2-1eea-4e38-b663-e82e8790916e",
+      "header": "WARNING: Auth API latency degraded (> 450ms p99)",
+      "body": "The authentication service response times have elevated from 65ms to 480ms over the past 15 minutes. Downstream database pool queue depth is rising.",
+      "category": "WARNING",
+      "isDismissed": false,
+      "dismissedAt": null,
+      "aiRemediation": "1. Check database connection pool saturation\n2. Inspect slow queries on users collection\n3. Enable read-replica routing for token verification",
+      "urgencyScore": 6,
+      "createdAt": "2026-09-04T14:42:06.030Z",
+      "updatedAt": "2026-09-04T14:42:06.030Z"
+    },
+    {
+      "id": "7fac0fc7-46c0-4a4d-a376-884d74fb1806",
+      "userId": "0c2c39e2-1eea-4e38-b663-e82e8790916e",
+      "header": "INFO: Daily backup archive synced to Google Cloud Storage",
+      "body": "Automated encrypted database snapshot was successfully created and verified. Archive checksum verified. This informational banner will auto-close in 90s.",
+      "category": "INFO",
+      "isDismissed": true,
+      "dismissedAt": "2026-09-04T14:46:45.363Z",
+      "aiRemediation": null,
+      "urgencyScore": 2,
+      "createdAt": "2026-09-04T14:42:06.031Z",
+      "updatedAt": "2026-09-04T14:46:45.363Z"
+    },
+    {
+      "id": "6f210d29-ec93-4039-b953-ed5ad00f1aae",
+      "userId": "user_1788533205356",
+      "header": "Cache warmed up",
+      "body": "Memcached keys reloaded",
+      "category": "INFO",
+      "isDismissed": true,
+      "dismissedAt": "2026-09-04T15:21:44.657Z",
+      "aiRemediation": null,
+      "urgencyScore": null,
+      "createdAt": "2026-09-04T14:46:45.363Z",
+      "updatedAt": "2026-09-04T15:21:44.657Z"
+    },
+    {
+      "id": "a5f0a553-b43d-41f0-9109-6d686308759e",
+      "userId": "user_1788533205356",
+      "header": "User specific alert",
+      "body": "Confidential notification",
+      "category": "WARNING",
+      "isDismissed": false,
+      "dismissedAt": null,
+      "aiRemediation": null,
+      "urgencyScore": null,
+      "createdAt": "2026-09-04T14:46:45.367Z",
+      "updatedAt": "2026-09-04T14:46:45.367Z"
+    },
+    {
+      "id": "65a345f6-acf2-4b87-9240-707f8457f0bc",
+      "userId": "0c2c39e2-1eea-4e38-b663-e82e8790916e",
+      "header": "G mail",
+      "body": "Daily check My university g mail and notify me about daily activities",
+      "category": "INFO",
+      "isDismissed": true,
+      "dismissedAt": "2026-09-04T15:24:09.559Z",
+      "aiRemediation": null,
+      "urgencyScore": null,
+      "createdAt": "2026-09-04T15:22:38.728Z",
+      "updatedAt": "2026-09-04T15:24:09.559Z"
+    }
+  ]
+}
