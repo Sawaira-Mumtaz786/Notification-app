@@ -2,8 +2,9 @@
 
 A full-stack, enterprise-grade personal notifications and telemetry management system re-implemented from scratch with **React (frontend)**, a **modular NestJS-inspired architecture (backend)**, and **Google Gemini AI software engineering capabilities**.
 
+- **Live Production URL (Render)**: [https://full-stack-app-k9jl.onrender.com](https://full-stack-app-k9jl.onrender.com)
 - **GitHub Repository**: [https://github.com/Sawaira-Mumtaz786/Notification-app](https://github.com/Sawaira-Mumtaz786/Notification-app)
-- **Live Cloud Preview / Demo**: [https://ais-pre-h2atsgtgxay2jjpoktm2wx-233031501422.asia-east1.run.app](https://ais-pre-h2atsgtgxay2jjpoktm2wx-233031501422.asia-east1.run.app)
+- **Cloud Preview / Backup Demo**: [https://ais-pre-h2atsgtgxay2jjpoktm2wx-233031501422.asia-east1.run.app](https://ais-pre-h2atsgtgxay2jjpoktm2wx-233031501422.asia-east1.run.app)
 
 ---
 
